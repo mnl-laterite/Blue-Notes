@@ -35,6 +35,10 @@ public class App {
         }
       });
 
+      app.post("logout", ctx -> {
+        ctx.req.getSession().invalidate();
+      });
+
       app.post("login", ctx -> {
         final String authorization = ctx.req.getHeader("Authorization");
         final BasicAuthCredentials basicAuthCredentials = ctx.basicAuthCredentials();
