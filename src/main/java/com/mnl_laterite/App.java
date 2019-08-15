@@ -4,16 +4,18 @@ import io.javalin.Javalin;
 import io.javalin.core.security.BasicAuthCredentials;
 
 import static io.javalin.apibuilder.ApiBuilder.crud;
-import static io.javalin.core.security.SecurityUtil.roles;
 
 
 public class App {
 
   public static UserService userService;
+  public static NoteService noteService;
 
   public static void main (String[] args) {
 
     userService = new UserService();
+    noteService = new NoteService();
+
 
     Javalin app = Javalin.create(config -> {
       config.addStaticFiles("/static");
