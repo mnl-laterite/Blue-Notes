@@ -1,24 +1,31 @@
 package com.mnl_laterite;
 
 import lombok.Data;
+import org.bson.types.ObjectId;
 
 @Data
 public class Note {
 
-  private final long noteId;
+  private ObjectId noteId;
+
+  private String owner;
 
   private String content;
 
   private String title;
 
-  private String tags;
+  Note (String content, String title) {
 
-  Note (long noteId, String content, String title, String tags) {
+    this.noteId = new ObjectId();
+    this.content = content;
+    this.title = title;
+  }
+
+  Note (ObjectId noteId, String content, String title) {
 
     this.noteId = noteId;
     this.content = content;
     this.title = title;
-    this.tags = tags;
   }
 
 }

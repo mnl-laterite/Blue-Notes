@@ -1,5 +1,7 @@
 package com.mnl_laterite;
 
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import io.javalin.Javalin;
 import io.javalin.core.security.BasicAuthCredentials;
 
@@ -10,11 +12,13 @@ public class App {
 
   public static UserService userService;
   public static NoteService noteService;
+  private static MongoClient mongoClient;
 
   public static void main (String[] args) {
 
+    mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
     userService = new UserService();
-    noteService = new NoteService();
+    noteService = new NoteService(mongoClient);
 
 
     Javalin app = Javalin.create(config -> {
@@ -61,5 +65,7 @@ public class App {
         ctx.status(401);
       });
     });
+
   }
+
 }
