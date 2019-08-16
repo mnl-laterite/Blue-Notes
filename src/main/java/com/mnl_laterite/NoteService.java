@@ -4,7 +4,6 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import io.javalin.plugin.json.JavalinJson;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
